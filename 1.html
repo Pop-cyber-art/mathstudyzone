@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grade 1 Math</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4faff;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      color: #3478f6;
+      text-align: center;
+    }
+    .question {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    }
+    input {
+      margin-top: 0.5rem;
+      padding: 0.4rem;
+      width: 100%;
+    }
+    .feedback {
+      margin-top: 0.3rem;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .back-btn {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 0.75rem 1.5rem;
+      background-color: #3478f6;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Grade 1 Math</h1>
+
+  
+  <div class="question">
+    <label>1. What is 3 + 4?</label>
+    <input type="text" oninput="checkAnswer(this, '7')" />
+    <div class="feedback"></div>
+  </div>
+
+  <div class="question">
+    <label>2. What is 10 - 6?</label>
+    <input type="text" oninput="checkAnswer(this, '4')" />
+    <div class="feedback"></div>
+  </div>
+
+  <div class="question">
+    <label>3. What is the next number after 19?</label>
+    <input type="text" oninput="checkAnswer(this, '20')" />
+    <div class="feedback"></div>
+  </div>
+
+  <div class="question">
+    <label>4. Is 7 less than 9? (Yes or No)</label>
+    <input type="text" oninput="checkAnswer(this, 'yes')" />
+    <div class="feedback"></div>
+  </div>
+
+
+  <button class="back-btn" onclick="location.href='index.html'">Back to Grade Select</button>
+
+  <script>
+    function checkAnswer(input, correctAnswer) {
+      const userAnswer = input.value.trim().toLowerCase();
+      const feedbackDiv = input.nextElementSibling;
+
+      if (userAnswer === "") {
+        feedbackDiv.textContent = "";
+        return;
+      }
+
+      if (userAnswer === correctAnswer.toLowerCase()) {
+        feedbackDiv.textContent = "✅ Correct";
+        feedbackDiv.className = "feedback correct";
+      } else {
+        feedbackDiv.textContent = "❌ Incorrect";
+        feedbackDiv.className = "feedback incorrect";
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && e.shiftKey && e.key === '1') {
+        window.location.href = 'games.html';
+      }
+    });
+  </script>
+</body>
+</html>
